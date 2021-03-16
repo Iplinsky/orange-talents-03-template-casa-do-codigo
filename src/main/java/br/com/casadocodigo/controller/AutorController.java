@@ -5,10 +5,7 @@ import java.net.URI;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +16,6 @@ import br.com.casadocodigo.entity.Autor;
 import br.com.casadocodigo.entityDto.AutorDto;
 import br.com.casadocodigo.entityFormDto.AutorFormDto;
 import br.com.casadocodigo.repository.AutorRepository;
-import br.com.casadocodigo.validator.BloqueiaEmailDuplicadoValidator;
 
 @RestController
 @RequestMapping("/autores")
@@ -29,14 +25,6 @@ public class AutorController {
 
 	public AutorController(AutorRepository autorRepository) {
 		this.repository = autorRepository;
-	}
-
-	@Autowired
-	private BloqueiaEmailDuplicadoValidator bloqueiaEmailDuplicadoValidator;
-
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.addValidators(bloqueiaEmailDuplicadoValidator);
 	}
 
 	@PostMapping
