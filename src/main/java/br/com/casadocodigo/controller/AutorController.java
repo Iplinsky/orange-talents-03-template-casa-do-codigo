@@ -22,18 +22,21 @@ import br.com.casadocodigo.repository.AutorRepository;
 import br.com.casadocodigo.validator.BloqueiaEmailDuplicadoValidator;
 
 @RestController
-@RequestMapping("/autor")
+@RequestMapping("/autores")
 public class AutorController {
 
-	@Autowired
-	private AutorRepository autorRepository;
+	private final AutorRepository repository;
+
+	public AutorController(AutorRepository autorRepository) {
+		this.repository = autorRepository;
+	}
 
 	@Autowired
 	private BloqueiaEmailDuplicadoValidator bloqueiaEmailDuplicadoValidator;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.addValidators(bloqueiaEmailDuplicadoValidator);		
+		binder.addValidators(bloqueiaEmailDuplicadoValidator);
 	}
 
 	@PostMapping
@@ -41,7 +44,7 @@ public class AutorController {
 	public ResponseEntity<AutorDto> cadastro(@RequestBody @Valid AutorFormDto autorFormDto,
 			UriComponentsBuilder uriBuilder) {
 		Autor autor = autorFormDto.converter();
-		autorRepository.save(autor);
+		repository.save(autor);
 
 		URI uri = uriBuilder.path("/autor/{id}").buildAndExpand(autor.getId()).toUri();
 		return ResponseEntity.created(uri).body(new AutorDto(autor));

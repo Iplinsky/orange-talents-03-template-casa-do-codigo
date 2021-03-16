@@ -17,7 +17,7 @@ public class BloqueiaEmailDuplicadoValidator implements Validator {
 	@Autowired
 	AutorRepository repository;
 
-	@Override // Indica onde será aplicada a validação
+	@Override
 	public boolean supports(Class<?> clazz) {
 		return AutorFormDto.class.isAssignableFrom(clazz);
 	}
