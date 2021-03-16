@@ -1,4 +1,4 @@
-package br.com.casadocodigo.entidade;
+package br.com.casadocodigo.entity;
 
 import java.time.LocalDateTime;
 
@@ -31,6 +31,7 @@ public class Autor {
 
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 
+	@Deprecated
 	public Autor() {
 	}
 

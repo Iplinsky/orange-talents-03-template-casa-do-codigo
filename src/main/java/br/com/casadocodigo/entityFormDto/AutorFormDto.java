@@ -1,10 +1,10 @@
-package br.com.casadocodigo.entidadeFormDto;
+package br.com.casadocodigo.entityFormDto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import br.com.casadocodigo.entidade.Autor;
+import br.com.casadocodigo.entity.Autor;
 
 public class AutorFormDto {
 
@@ -33,6 +33,10 @@ public class AutorFormDto {
 
 	public Autor converter() {
 		return new Autor(nome, email, descricao);
+	}
+
+	public String getEmail() {
+		return this.email;
 	}
 
 }

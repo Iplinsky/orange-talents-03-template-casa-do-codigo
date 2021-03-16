@@ -1,8 +1,8 @@
-package br.com.casadocodigo.entidadeDto;
+package br.com.casadocodigo.entityDto;
 
 import java.time.LocalDateTime;
 
-import br.com.casadocodigo.entidade.Autor;
+import br.com.casadocodigo.entity.Autor;
 
 public class AutorDto {
 
