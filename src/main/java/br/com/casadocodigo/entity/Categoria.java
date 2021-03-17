@@ -1,9 +1,13 @@
 package br.com.casadocodigo.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -15,6 +19,9 @@ public class Categoria {
 
 	@NotBlank(message = "O campo nome não pode estar vazio.")
 	private String nome;
+
+	@OneToMany(mappedBy = "categoria")
+	private List<Livro> listaDeLivros = new ArrayList<>();
 
 	public Categoria() {
 	}
