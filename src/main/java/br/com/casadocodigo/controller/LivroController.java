@@ -2,12 +2,14 @@ package br.com.casadocodigo.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.casadocodigo.entity.Livro;
+import br.com.casadocodigo.entityDto.LivroDetalhadoDto;
 import br.com.casadocodigo.entityDto.LivroDto;
 import br.com.casadocodigo.entityDto.LivroDtoSimplificado;
 import br.com.casadocodigo.entityFormDto.LivroFormDto;
@@ -51,5 +54,17 @@ public class LivroController {
 	public List<LivroDtoSimplificado> recuperarRegistros() {
 		List<Livro> listaDeLivros = livroRepository.findAll();
 		return LivroDtoSimplificado.converter(listaDeLivros);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<LivroDetalhadoDto> buscaDetalhada(@PathVariable Long id) {
+		Optional<Livro> livro = livroRepository.findById(id);
+
+		if (livro.isPresent()) {
+			LivroDetalhadoDto livroDetalhado = new LivroDetalhadoDto(livro.get());
+			return ResponseEntity.ok(livroDetalhado);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }

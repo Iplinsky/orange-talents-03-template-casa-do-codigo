@@ -58,6 +58,7 @@ public class Livro {
 	@JoinColumn(name = "autor_id", nullable = false)
 	private Autor autor;
 
+	@Deprecated
 	public Livro() {
 	}
 
@@ -107,6 +108,10 @@ public class Livro {
 		return dataPublicacao;
 	}
 
+	public Autor getAutor() {
+		return autor;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -131,5 +136,4 @@ public class Livro {
 			return false;
 		return true;
 	}
-
 }
