@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.util.Assert;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.casadocodigo.entity.Autor;
@@ -81,7 +83,7 @@ public class LivroFormDto {
 		@NotNull
 		Categoria categoria = categoriaRepository.getOne(idCategoria);
 		@NotNull
-		Autor autor = autorRepository.getOne(idAutor);
+		Autor autor = autorRepository.getOne(idAutor);		
 
 		return new Livro(titulo, resumo, sumario, preco, numeroDePaginas, isbn, dataPublicacao, categoria, autor);
 	}
