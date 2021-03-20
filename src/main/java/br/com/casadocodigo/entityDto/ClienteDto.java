@@ -6,7 +6,6 @@ public class ClienteDto {
 
 	private Long id;
 
-//	@JsonCreator(mode = Mode.PROPERTIES)
 	public ClienteDto(Cliente cliente) {
 		this.id = cliente.getId();
 	}
