@@ -22,9 +22,9 @@ public class Pais {
 
 	@OneToMany(mappedBy = "pais")
 	private List<Estado> estado = new ArrayList<Estado>();
-//
-//	@OneToMany(mappedBy = "paisCliente")
-//	private List<Cliente> clientes = new ArrayList<Cliente>();
+
+	@OneToMany(mappedBy = "paisCliente")
+	private List<Cliente> clientes = new ArrayList<Cliente>();
 
 	@Deprecated
 	public Pais() {
