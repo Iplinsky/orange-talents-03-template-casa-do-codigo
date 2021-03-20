@@ -34,7 +34,7 @@ public class AutorController {
 		Autor autor = autorFormDto.converter();
 		repository.save(autor);
 
-		URI uri = uriBuilder.path("/autor/{id}").buildAndExpand(autor.getId()).toUri();
+		URI uri = uriBuilder.path("/autores/{id}").buildAndExpand(autor.getId()).toUri();
 		return ResponseEntity.created(uri).body(new AutorDto(autor));
 	}
 }

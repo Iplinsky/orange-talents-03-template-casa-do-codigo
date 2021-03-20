@@ -36,7 +36,7 @@ public class LivroFormDto {
 	@Min(value = 20)
 	private Double preco;
 
-	@NotNull
+	@NotNull	
 	@Min(value = 100)
 	private Long numeroDePaginas;
 
