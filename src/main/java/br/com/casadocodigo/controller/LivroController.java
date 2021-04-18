@@ -60,11 +60,8 @@ public class LivroController {
 	public ResponseEntity<LivroDetalhadoDto> buscaDetalhada(@PathVariable Long id) {
 		Optional<Livro> livro = livroRepository.findById(id);
 
-		if (livro.isPresent()) {
-			LivroDetalhadoDto livroDetalhado = new LivroDetalhadoDto(livro.get());
-			return ResponseEntity.ok(livroDetalhado);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+		return livro.map(l -> {
+			return ResponseEntity.ok(new LivroDetalhadoDto(l));
+		}).orElse(ResponseEntity.notFound().build());
 	}
 }

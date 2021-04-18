@@ -8,8 +8,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.util.Assert;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.casadocodigo.entity.Autor;
@@ -36,7 +34,7 @@ public class LivroFormDto {
 	@Min(value = 20)
 	private Double preco;
 
-	@NotNull	
+	@NotNull
 	@Min(value = 100)
 	private Long numeroDePaginas;
 
@@ -72,8 +70,8 @@ public class LivroFormDto {
 	}
 
 	/*
-	 * Método setter criado para definir o valor do atributo dataPublicacao, 
-	 * pois através do construtor é gerado uma falha.
+	 * Método setter criado para definir o valor do atributo dataPublicacao, pois
+	 * através do construtor é gerado uma falha.
 	 */
 	public void setDataPublicacao(LocalDate dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
@@ -83,7 +81,7 @@ public class LivroFormDto {
 		@NotNull
 		Categoria categoria = categoriaRepository.getOne(idCategoria);
 		@NotNull
-		Autor autor = autorRepository.getOne(idAutor);		
+		Autor autor = autorRepository.getOne(idAutor);
 
 		return new Livro(titulo, resumo, sumario, preco, numeroDePaginas, isbn, dataPublicacao, categoria, autor);
 	}
